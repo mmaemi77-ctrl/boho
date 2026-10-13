@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Сайт для студии «Бохо»: разбор</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: спокойный разбор в цветах «Бохо». Узкая колонка, карточки конкурентов сеткой, тёмный блок со ссылкой на набросок */
+:root{
+  --bg:#F6F0E8;--surface:#FFFBF6;--ink:#3A2F27;--muted:#7C6D61;--line:#E3D6C6;
+  --mocha:#7D6A57;--clay:#C08A64;--soft:#EFE5D8;--on-mocha:#FFF8F0;--good:#6F7D5C;
+  --display:"Cormorant Garamond",Georgia,serif;--body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1D1915;--surface:#27211C;--ink:#F2EAE0;--muted:#B8AA9C;--line:#3B332C;
+  --mocha:#C9AE94;--clay:#D9A47D;--soft:#302822;--on-mocha:#1D1915;--good:#A9B98F;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1D1915;--surface:#27211C;--ink:#F2EAE0;--muted:#B8AA9C;--line:#3B332C;
+  --mocha:#C9AE94;--clay:#D9A47D;--soft:#302822;--on-mocha:#1D1915;--good:#A9B98F;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;margin:0;padding-inline:16px}
+.wrap{max-width:920px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance;line-height:1.1}
+h2{font-size:clamp(28px,4.4vw,40px)}
+h2 em,h1 em{font-style:italic;color:var(--clay);font-weight:500}
+h3{font-size:22px}
+p{margin:0}
+a{color:var(--mocha)}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha);font-weight:700}
+section{padding-block:44px;border-top:1px solid var(--line);display:grid;gap:20px}
+.muted{color:var(--muted)}
+header.top{padding-block:40px 48px;display:grid;gap:18px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:52px;height:52px;padding:6px;border-radius:50%;background:var(--mocha);color:var(--on-mocha)}
+.logo b{font-family:var(--display);font-size:28px;letter-spacing:.1em;display:block;line-height:1}
+.logo small{font-size:12px;color:var(--muted)}
+header.top h1{font-size:clamp(36px,6vw,60px);margin-top:10px}
+.key{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.key li{background:var(--surface);border-radius:18px;padding:16px 20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:baseline}
+.key li b{font-family:var(--display);font-size:28px;color:var(--clay);line-height:1}
+.list{margin:0;padding-left:20px;display:grid;gap:8px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box{background:var(--surface);border-radius:20px;padding:20px 22px;display:grid;gap:8px;align-content:start}
+.box h3{font-size:22px}
+.comp{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;gap:10px;align-content:start}
+.card .city{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.card dl{margin:0;display:grid;gap:6px;font-size:15px}
+.card dt{font-weight:700;display:inline}
+.card dd{margin:0;display:inline;color:var(--muted)}
+.card a{font-size:14px;word-break:break-all}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--soft);color:var(--mocha)}
+.tasks{counter-reset:t;display:grid;gap:12px;list-style:none;margin:0;padding:0}
+.tasks li{counter-increment:t;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.tasks li::before{content:counter(t);width:44px;height:44px;border-radius:50%;background:var(--soft);color:var(--mocha);display:grid;place-items:center;font-family:var(--display);font-size:24px;font-weight:600}
+.proto{background:var(--mocha);color:var(--on-mocha);border-radius:28px;padding:30px clamp(20px,4vw,40px);display:grid;gap:16px}
+.proto h2 em{color:var(--on-mocha);opacity:.8}
+.proto ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.proto .btn{justify-self:start;background:var(--on-mocha);color:var(--mocha);text-decoration:none;font-weight:700;border-radius:999px;padding:14px 26px}
+.ideas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.qs{counter-reset:q;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.qs li{counter-increment:q;background:var(--surface);border-radius:16px;padding:14px 18px}
+.qs li::before{content:counter(q)". ";color:var(--clay);font-weight:700}
+footer{padding-block:36px 40px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted)}
+footer b{color:var(--ink);letter-spacing:.08em}
+.tg{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--soft);color:var(--mocha);vertical-align:middle;margin-left:8px}
+.tg svg{width:16px;height:16px}
+@media (max-width:700px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="rh"><path d="M0-38 16-20 0-2-16-20z"/><path d="M0-31 10-20 0-9-10-20z"/><path d="M0-25 4.5-20 0-15-4.5-20z"/></g>
+  <g id="mandala" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#rh"/><use href="#rh" transform="rotate(45)"/><use href="#rh" transform="rotate(90)"/><use href="#rh" transform="rotate(135)"/><use href="#rh" transform="rotate(180)"/><use href="#rh" transform="rotate(225)"/><use href="#rh" transform="rotate(270)"/><use href="#rh" transform="rotate(315)"/></g>
+</defs></svg>
+<div class="wrap">
+  <header class="top">
+    <div class="logo"><svg viewBox="-60 -60 120 120"><use href="#mandala"/></svg><div><b>БОХО</b><small>жизнь, полная творчества</small></div></div>
+    <div>
+      <div class="eyebrow">12 октября 2026</div>
+      <h1>Сайт для студии «Бохо»: <em>рынок, конкуренты и набросок</em></h1>
+    </div>
+    <p class="muted">Посмотрела ваше сообщество ВКонтакте, карточку на Яндекс Картах и Telegram-канал, а ещё творческие студии Кемерово и сильные примеры из Москвы. Ниже коротко, что увидела и как сайт может помочь.</p>
+  </header>
+
+  <section>
+    <div class="eyebrow">Главное</div>
+    <ul class="key">
+      <li><b>1</b><span>У вас пять направлений в одной студии: школа макраме, ковровая вышивка, детские занятия, девичники и изделия на заказ. Такого набора в Кемерово я больше не нашла.</span></li>
+      <li><b>2</b><span>Расписание выходит постом раз в неделю и через пару дней уходит вниз ленты. На сайте оно всегда на одном месте, и записаться можно прямо из него.</span></li>
+      <li><b>3</b><span>У соседних студий цена стоит рядом с занятием. Человеку проще решиться, когда не нужно сначала спрашивать в личке.</span></li>
+      <li><b>4</b><span>Впереди Новый год. Сертификаты у вас уже есть, а на сайте их можно выбрать и заказать за минуту.</span></li>
+      <li><b>5</b><span>Отзывов на Яндекс Картах пока нет. Сайт поможет их собирать: после занятия ученица получает ссылку и оставляет отзыв.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="eyebrow">Что у вас уже сильное</div>
+    <div class="cols">
+      <div class="box"><h3>Школа, а не разовые занятия</h3><p class="muted">«Школа макраме и ковровой вышивки». Учиться с нуля по программе: это сильнее разового мастер-класса.</p></div>
+      <div class="box"><h3>Для всей семьи</h3><p class="muted">«Мастер-классы для детей и творческие девичники для взрослых». Мама приводит ребёнка на фактурную живопись, а потом может прийти сама с подругами.</p></div>
+      <div class="box"><h3>Изделия на заказ</h3><p class="muted">Макраме и вещи из хлопкового шнура в технике «зигзаг». Тот, кто не готов плести сам, может просто заказать.</p></div>
+      <div class="box"><h3>Удобно добраться</h3><p class="muted">Солнечный бульвар, 32 в Лесной Поляне. На Яндекс Картах указаны парковка и доступный вход для колясок, в магазине бесплатная доставка.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Что сейчас мешает получать заявки</div>
+    <ul class="list">
+      <li>Расписание живёт в постах, и найти занятие на следующую неделю можно только листая ленту.</li>
+      <li>Цен на Яндекс Картах и в описании сообщества не видно, поэтому каждый вопрос начинается с «сколько стоит?».</li>
+      <li>Направления, заказы, сертификаты и магазин разложены по разным постам и разделам.</li>
+      <li>В карточке Яндекса стоит ссылка на Taplink со старым названием time_macrame. Тот, кто перейдёт по ней, может не понять, что это вы.</li>
+      <li>Отзывов на Яндексе пока ноль, а их смотрят первыми, когда выбирают студию.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="eyebrow">Кто ещё работает в нише</div>
+    <h2>Творческие студии <em>Кемерово и не только</em></h2>
+    <div class="comp">
+      <div class="card"><span class="city">Кемерово</span><h3>Арт-дом СВ</h3>
+        <dl><div><dt>Первый экран: </dt><dd>«Ближайшие мастер-классы» с датами и временем</dd></div>
+        <div><dt>Цены: </dt><dd>на отдельной странице, панно макраме 2000 ₽</dd></div>
+        <div><dt>Запись: </dt><dd>онлайн-формы нет, кнопки ведут в контакты</dd></div>
+        <div><dt>Фишки: </dt><dd>сертификат на открытую сумму, выездные мастер-классы на девичники и дни рождения</dd></div></dl>
+        <a href="https://artdomsv-kemerovo.ru/" target="_blank" rel="noopener">artdomsv-kemerovo.ru</a></div>
+      <div class="card"><span class="city">Кемерово</span><h3>Творческое пространство Stories</h3>
+        <dl><div><dt>Формат: </dt><dd>творческие киновечера, тафтинг, роспись</dd></div>
+        <div><dt>Цены: </dt><dd>указаны в афише: от 1500 до 4900 ₽ (тафтинг)</dd></div>
+        <div><dt>Где видела: </dt><dd>карточки в афише Кавёр, свой сайт не открывала</dd></div></dl>
+        <a href="https://kaverafisha.ru/kemerovo/events/lists/master-classes" target="_blank" rel="noopener">kaverafisha.ru</a></div>
+      <div class="card"><span class="city">Кемерово</span><h3>Художественная мастерская «Рис»</h3>
+        <dl><div><dt>Формат: </dt><dd>тематические вечера: коллаж, создание парфюма</dd></div>
+        <div><dt>Цены: </dt><dd>в афише, 1400 и 2700 ₽</dd></div>
+        <div><dt>Где видела: </dt><dd>карточки в афише Кавёр, свой сайт не открывала</dd></div></dl>
+        <a href="https://kaverafisha.ru/kemerovo/events/lists/master-classes" target="_blank" rel="noopener">kaverafisha.ru</a></div>
+      <div class="card"><span class="city">Москва · пример из другого города</span><h3>Школа «Сошью»</h3>
+        <dl><div><dt>Первый экран: </dt><dd>«Ковровая вышивка. Занятия для начинающих»</dd></div>
+        <div><dt>Цены: </dt><dd>указаны, 3500 и 5500 ₽</dd></div>
+        <div><dt>Запись: </dt><dd>кнопка «Купить билет», оплата картой, лист ожидания следующего набора</dd></div>
+        <div><dt>Фишки: </dt><dd>подробно, что входит: материалы, эскизы, пяльца, чай и кофе; рассказ о преподавателе</dd></div></dl>
+        <a href="https://cosew.ru/punchneedle" target="_blank" rel="noopener">cosew.ru</a></div>
+      <div class="card"><span class="city">Москва · пример из другого города</span><h3>My Hygge Box</h3>
+        <dl><div><dt>Первый экран: </dt><dd>«Макраме "Кашпо"»</dd></div>
+        <div><dt>Цены: </dt><dd>указаны, 3000 ₽</dd></div>
+        <div><dt>Запись: </dt><dd>«Записаться онлайн» и отдельная кнопка «Записаться по сертификату»</dd></div>
+        <div><dt>Фишки: </dt><dd>цвет и состав нитей выбирают заранее, занятие для начинающих от 12 лет</dd></div></dl>
+        <a href="https://myhyggebox.ru/macramemsk" target="_blank" rel="noopener">myhyggebox.ru</a></div>
+    </div>
+    <div class="cols">
+      <div class="box"><h3>Что стало нормой</h3><ul class="list muted"><li>Цена рядом с занятием</li><li>Ближайшие даты на первом экране</li><li>Подарочные сертификаты</li><li>У сильных примеров запись онлайн и рассказ о том, что входит в занятие</li></ul></div>
+      <div class="box"><h3>Чего нет ни у кого в Кемерово</h3><ul class="list muted"><li>Школы макраме и ковровой вышивки с курсом</li><li>Расписания на неделю с записью в пару касаний</li><li>Обучения и изделий на заказ в одном месте</li></ul><p class="muted" style="font-size:15px">Кстати, сертификат на мастер-класс по макраме в Кемерово сейчас продаёт сервис подарков-впечатлений за 2000 ₽. Значит, такой подарок ищут.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Что должен делать ваш сайт</div>
+    <ol class="tasks">
+      <li><span><b>Показывать расписание недели</b><br><span class="muted">Нажал на занятие, оставил имя и телефон, готово.</span></span></li>
+      <li><span><b>Объяснять каждое направление</b><br><span class="muted">Для кого, что внутри, сколько стоит, сколько длится.</span></span></li>
+      <li><span><b>Продавать сертификаты к праздникам</b><br><span class="muted">Выбор: мастер-класс, курс, девичник или сумма.</span></span></li>
+      <li><span><b>Принимать заказы на изделия</b><br><span class="muted">Фото работ и кнопка «Заказать» рядом с каждой.</span></span></li>
+      <li><span><b>Собирать отзывы</b><br><span class="muted">Кнопка, которая ведёт сразу на вашу карточку в Яндексе.</span></span></li>
+      <li><span><b>Отвечать на частые вопросы</b><br><span class="muted">Что взять, с какого возраста, как оплатить, где парковка.</span></span></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="proto">
+      <div class="eyebrow" style="color:var(--on-mocha);opacity:.8">Набросок</div>
+      <h2>Что уже есть <em>в наброске</em></h2>
+      <ul>
+        <li><b>Первый экран</b> с тем, чему у вас учат, и двумя кнопками: выбрать занятие или подарить сертификат.</li>
+        <li><b>Направления:</b> нажимаете на школу, вышивку, детей, девичник или заказ, и справа открывается описание.</li>
+        <li><b>Расписание на неделю.</b> Нажатое занятие сразу подставляется в заявку.</li>
+        <li><b>Изделия на заказ</b> с кнопкой «Заказать».</li>
+        <li><b>Сертификаты</b> к Новому году с выбором вида.</li>
+        <li><b>О студии, отзывы, вопросы</b> и форма записи со ссылкой на WhatsApp.</li>
+      </ul>
+      <a class="btn" href="./" target="_blank" rel="noopener">Открыть набросок →</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Что можно предложить вашим ученицам</div>
+    <div class="ideas">
+      <div class="box"><h3>Пробное занятие</h3><p class="muted">Первое занятие в школе по сниженной цене, чтобы решиться было проще.</p></div>
+      <div class="box"><h3>Сертификат в упаковке</h3><p class="muted">Красивый конверт к Новому году и 8 Марта. Можно забрать в студии или получить файлом.</p></div>
+      <div class="box"><h3>Мама и ребёнок</h3><p class="muted">Ребёнок на фактурной живописи, мама в это время на макраме в соседней группе.</p></div>
+      <div class="box"><h3>Девичник под ключ</h3><p class="muted">Одна цена за компанию: занятие, материалы и чай.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Что нужно уточнить</div>
+    <ol class="qs">
+      <li>Сколько стоят курс в школе, детское занятие и девичник?</li>
+      <li>Сколько занятий в курсе макраме и в курсе ковровой вышивки?</li>
+      <li>Какое расписание сейчас: дни и время по направлениям?</li>
+      <li>С какого возраста детские занятия и сколько человек в группе?</li>
+      <li>Сколько гостей вмещает студия на девичник?</li>
+      <li>Какие изделия чаще всего заказывают и сколько их делать по времени?</li>
+      <li>На кого оформлять сайт: ИП или самозанятость, и какой email указать?</li>
+    </ol>
+  </section>
+
+  <footer>
+    <span>Подготовила Анастасия Абдуллаева · <b>FOR.MI</b> designed &amp; developed by ABN<a class="tg" href="https://t.me/abanev_dev" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 4.3 2.9 11.5c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.5c.2.6.4.8.9.8s.6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8L22.8 5.8c.3-1.3-.4-1.9-1.4-1.5zM8.6 14.1l9.6-6c.5-.3.9-.1.5.2l-7.8 7.1-.3 3.3-2-4.6z"/></svg></a></span>
+  </footer>
+</div>
+</body>
+</html>

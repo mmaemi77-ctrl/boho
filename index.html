@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Студия «Бохо» · макраме и ковровая вышивка в Кемерово</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: тёплая бохо-студия. Арка вместо фото, узор с логотипа, выбор направления, расписание неделей, изделия на заказ, сертификаты, запись. Одна светлая тема в цветах логотипа */
+:root{
+  color-scheme:light;
+  --bg:#F6F0E8;
+  --panel:#FFFBF6;
+  --panel2:#EFE5D8;
+  --ink:#3A2F27;
+  --muted:#7C6D61;
+  --line:#E3D6C6;
+  --mocha:#7D6A57;
+  --clay:#C08A64;
+  --sage:#9AA48A;
+  --on-mocha:#FFF8F0;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;overflow-x:hidden}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;line-height:1.05;text-wrap:balance}
+h2{font-size:clamp(34px,5.4vw,56px)}
+h2 em,h1 em{font-style:italic;color:var(--clay);font-weight:500}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha)}
+.kicker::before{content:"";width:22px;height:22px;background:currentColor;-webkit-mask:var(--rhomb) center/contain no-repeat;mask:var(--rhomb) center/contain no-repeat}
+:root{--rhomb:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6'%3E%3Cpath d='M12 2 22 12 12 22 2 12z'/%3E%3Cpath d='M12 7 17 12 12 17 7 12z'/%3E%3C/svg%3E")}
+section{padding-block:72px}
+a{color:inherit}
+button{font-family:var(--body)}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--mocha);color:var(--on-mocha);border:0;border-radius:999px;padding:14px 16px 14px 24px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;transition:transform .15s,background .2s}
+.btn .ar{width:30px;height:30px;border-radius:50%;background:var(--on-mocha);color:var(--mocha);display:grid;place-items:center}
+.btn:hover{transform:translateY(-2px);background:#6C5B4A}
+.btn.out{background:transparent;color:var(--ink);border:1.5px solid var(--ink);padding:14px 24px}
+.btn.out:hover{background:var(--ink);color:var(--bg)}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+.link{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.note{display:inline-block;font-size:12px;font-weight:600;color:var(--clay);background:color-mix(in srgb,var(--clay) 12%,transparent);border-radius:999px;padding:3px 10px}
+
+/* плашка наброска */
+.draft{background:var(--ink);color:var(--bg);font-size:13px;text-align:center;padding:8px 16px}
+
+/* шапка */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo .badge{width:44px;height:44px;border-radius:50%;background:var(--mocha);display:grid;place-items:center;flex:none}
+.logo .badge svg{width:34px;height:34px;color:#F1E6D8}
+.logo b{font-family:var(--display);font-size:24px;letter-spacing:.08em;display:block;line-height:1}
+.logo small{display:block;font-size:11px;color:var(--muted);letter-spacing:.06em}
+nav{display:flex;gap:22px;font-size:14px;font-weight:600}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+header .btn{padding:10px 18px;font-size:14px}
+@media (max-width:900px){nav{display:none}}
+@media (max-width:420px){.logo small{display:none}header .btn{padding:9px 14px}}
+
+/* hero */
+.hero{padding-block:44px 0;overflow:hidden}
+.hero .top{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:end}
+.hero h1{font-size:clamp(46px,8vw,92px);line-height:.95}
+.hero p{color:var(--muted);font-size:18px;max-width:42ch;margin:22px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.arch-box{position:relative;min-height:460px}
+.pattern{position:absolute;left:-14%;top:-2%;width:min(300px,62%);color:var(--clay);opacity:.35;pointer-events:none}
+.arch{position:absolute;left:8%;right:8%;bottom:0;top:6%;border-radius:220px 220px 0 0;background:linear-gradient(180deg,#E7D6C2,#CFB59A);display:grid;place-items:center;text-align:center;padding:30px;font-size:13px;color:#6E5A48;border:1.5px solid var(--line);border-bottom:0}
+.arch span{max-width:22ch}
+.tag{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:10px 14px;font-size:13px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgb(58 47 39 / .08)}
+.tag b{font-family:var(--display);font-size:24px;color:var(--clay)}
+.tag.t1{left:0;top:30%}
+.tag.t2{right:0;bottom:14%}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.strip > div{padding:22px 20px;border-right:1px solid var(--line);display:flex;gap:14px;align-items:center}
+.strip > div:last-child{border-right:0}
+.strip svg{width:32px;height:32px;color:var(--clay);flex:none}
+.strip b{display:block;font-size:15px}
+.strip span{font-size:13px;color:var(--muted)}
+@media (max-width:860px){.hero .top{grid-template-columns:1fr}.arch-box{min-height:400px}.tag.t1{top:4%}.arch{padding-top:90px}.strip{grid-template-columns:1fr 1fr}.strip > div{flex-direction:column;align-items:flex-start;gap:10px;padding:18px 16px}.strip > div:nth-child(2){border-right:0}.strip > div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* направления */
+.dirs{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start;margin-top:34px}
+.dir-list{display:grid;gap:10px}
+.dir{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--panel);border:1.5px solid var(--line);border-radius:20px;padding:16px 20px;color:var(--ink);font-family:var(--display);font-size:24px;font-weight:600;cursor:pointer;text-align:left;transition:border-color .2s,background .2s}
+.dir span{font-family:var(--body);font-size:13px;font-weight:500;color:var(--muted)}
+.dir[aria-pressed="true"]{border-color:var(--mocha);background:var(--panel2)}
+.dir[aria-pressed="true"]::after{content:"→";color:var(--clay);font-family:var(--body)}
+.plan{background:var(--mocha);color:var(--on-mocha);border-radius:30px;padding:32px;display:grid;gap:16px;position:relative;overflow:hidden}
+.plan h3{font-size:clamp(30px,4vw,42px)}
+.plan p{margin:0;opacity:.9}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.plan li{display:flex;gap:10px}
+.plan li::before{content:"◇";color:#E8C9AE}
+.plan .meta{display:flex;flex-wrap:wrap;gap:8px}
+.plan .meta span{border:1.5px solid color-mix(in srgb,var(--on-mocha) 50%,transparent);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600}
+.plan .btn{background:var(--on-mocha);color:var(--mocha);justify-self:start}
+.plan .btn .ar{background:var(--mocha);color:var(--on-mocha)}
+.plan svg.bg{position:absolute;right:-60px;bottom:-60px;width:260px;opacity:.12;color:var(--on-mocha)}
+@media (max-width:860px){.dirs{grid-template-columns:1fr}}
+
+/* расписание */
+.sched{margin-top:26px;overflow-x:auto;border:1px solid var(--line);border-radius:24px;background:var(--panel)}
+.sched table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+.sched th{font-family:var(--display);font-weight:600;font-size:20px;padding:14px 10px;border-bottom:1px solid var(--line);color:var(--muted)}
+.sched td{padding:8px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top;height:76px}
+.sched td:last-child{border-right:0}
+.sched tr:last-child td{border-bottom:0}
+.sched .time{font-family:var(--display);font-size:20px;color:var(--muted);width:72px;text-align:center;vertical-align:middle}
+.slot{width:100%;text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:8px 10px;color:var(--ink);cursor:pointer;display:grid;gap:2px;font-size:13px}
+.slot b{font-size:13px}
+.slot span{color:var(--muted);font-size:12px}
+.slot.kids{border-left:4px solid var(--sage)}
+.slot.adult{border-left:4px solid var(--clay)}
+.slot[aria-pressed="true"]{background:var(--mocha);color:var(--on-mocha);border-color:var(--mocha)}
+.slot[aria-pressed="true"] span{color:var(--on-mocha)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:13px;color:var(--muted);align-items:center}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* изделия на заказ */
+.works{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.work{display:grid;gap:8px;align-content:start}
+.work .ph{aspect-ratio:3/4;border-radius:120px 120px 22px 22px;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 45%,var(--panel)),color-mix(in srgb,var(--c) 75%,var(--panel)));display:grid;place-items:center;text-align:center;padding:18px;font-size:12px;color:#6E5A48}
+.work h3{font-family:var(--body);font-size:16px;font-weight:700}
+.work p{margin:0;font-size:14px;color:var(--muted)}
+.work .row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.work .btn{padding:9px 14px;font-size:13px}
+@media (max-width:900px){.works{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.works{gap:12px}.work h3{font-size:15px}}
+
+/* сертификаты */
+.gift{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--panel2);border-radius:36px;padding:44px clamp(20px,5vw,56px);position:relative;overflow:hidden}
+.gift p{color:var(--muted);margin:16px 0 0}
+.card-cert{aspect-ratio:1.6;max-width:440px;width:100%;justify-self:center;border-radius:24px;background:var(--mocha);color:var(--on-mocha);padding:26px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 24px 50px rgb(58 47 39 / .22);transform:rotate(-3deg)}
+.card-cert svg{position:absolute;right:-40px;top:-40px;width:220px;opacity:.18}
+.card-cert b{font-family:var(--display);font-size:clamp(28px,4vw,40px);letter-spacing:.06em}
+.card-cert small{opacity:.85}
+.gift-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 15px;font-weight:600;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+@media (max-width:860px){.gift{grid-template-columns:1fr}}
+
+/* о студии */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.about p{color:var(--muted);margin:16px 0 0}
+.facts{display:grid;gap:0;margin-top:6px}
+.fact{display:grid;grid-template-columns:44px 1fr;gap:16px;padding-block:16px;border-bottom:1px solid var(--line);align-items:start}
+.fact svg{width:28px;height:28px;color:var(--clay)}
+.fact strong{display:block;font-size:16px}
+.fact span{color:var(--muted);font-size:15px}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+
+/* отзывы */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.rev{background:var(--panel);border:1.5px dashed var(--line);border-radius:24px;padding:24px;display:grid;gap:10px;color:var(--muted);font-size:15px}
+.rev b{color:var(--ink);font-family:var(--display);font-size:22px}
+@media (max-width:860px){.revs{grid-template-columns:1fr}}
+
+/* вопросы */
+details{border-bottom:1.5px solid var(--line);padding-block:16px}
+summary{list-style:none;display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:17px;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--clay);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:8px 0 0;color:var(--muted)}
+
+/* запись */
+.final{background:var(--mocha);color:var(--on-mocha);border-radius:36px;padding:48px clamp(20px,5vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;position:relative;overflow:hidden}
+.final h2{font-size:clamp(38px,6vw,64px)}
+.final h2 em{color:#EBC6A6}
+.final p{margin:16px 0 0;max-width:38ch;opacity:.92}
+.final form{display:grid;gap:12px;position:relative}
+.final input,.final select{font:16px var(--body);padding:14px 16px;border-radius:14px;border:1.5px solid color-mix(in srgb,var(--on-mocha) 35%,transparent);background:color-mix(in srgb,var(--on-mocha) 12%,transparent);color:var(--on-mocha);width:100%}
+.final select option{color:var(--ink)}
+.final input::placeholder{color:color-mix(in srgb,var(--on-mocha) 65%,transparent)}
+.final .btn{background:var(--on-mocha);color:var(--mocha);justify-self:start}
+.final .btn .ar{background:var(--mocha);color:var(--on-mocha)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.5}
+.consent input{width:18px;height:18px;flex:none;margin-top:2px;padding:0;accent-color:var(--clay)}
+.ok{background:var(--on-mocha);color:var(--mocha);border-radius:18px;padding:20px;font-weight:600}
+.final svg.bg{position:absolute;left:-90px;bottom:-90px;width:320px;opacity:.1;color:var(--on-mocha)}
+.wa{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;margin-top:18px;color:var(--on-mocha)}
+@media (max-width:860px){.final{grid-template-columns:1fr}}
+
+/* подвал */
+footer{padding-block:40px 30px;border-top:1px solid var(--line);margin-top:60px}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.f-grid > div{display:grid;gap:4px;align-content:start}
+.f-grid span{font-size:13px;color:var(--muted)}
+.f-grid b{font-size:16px;font-weight:600}
+.f-bot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.sign{display:inline-flex;align-items:center;flex-wrap:wrap;gap:10px}
+.sign b{letter-spacing:.1em;color:var(--ink);font-size:14px}
+.socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.socials a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);color:var(--mocha);transition:background .2s,color .2s,transform .2s}
+.socials a:hover{background:var(--mocha);color:var(--on-mocha);transform:translateY(-2px)}
+.socials svg{width:20px;height:20px}
+.socials.tiny{margin-top:0}
+.socials.tiny a{width:32px;height:32px}
+.socials.tiny svg{width:15px;height:15px}
+
+/* окно документов */
+.modal{position:fixed;inset:0;z-index:50;background:rgb(40 30 22 / .55);display:flex;align-items:flex-end;justify-content:center;padding:16px}
+.sheet{background:var(--panel);color:var(--ink);border-radius:26px;max-width:700px;width:100%;max-height:85vh;overflow:auto;padding:30px clamp(20px,5vw,40px);position:relative}
+.sheet h3{font-size:32px;margin-bottom:8px}
+.sheet h4{font-size:15px;margin:20px 0 6px}
+.sheet p,.sheet li{font-size:14px;color:var(--muted);margin:0 0 8px}
+.sheet ul{padding-left:18px;margin:0}
+.close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:20px;cursor:pointer}
+@media (min-width:861px){.modal{align-items:center}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- узор как на логотипе студии: ромбы, вложенные друг в друга, по кругу -->
+    <g id="rh"><path d="M0-38 16-20 0-2-16-20z"/><path d="M0-31 10-20 0-9-10-20z"/><path d="M0-25 4.5-20 0-15-4.5-20z"/></g>
+    <g id="mandala" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+      <use href="#rh"/><use href="#rh" transform="rotate(45)"/><use href="#rh" transform="rotate(90)"/><use href="#rh" transform="rotate(135)"/>
+      <use href="#rh" transform="rotate(180)"/><use href="#rh" transform="rotate(225)"/><use href="#rh" transform="rotate(270)"/><use href="#rh" transform="rotate(315)"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="draft">Набросок для студии «Бохо»: тексты из открытых страниц, фото пока заглушки, форма ничего не отправляет</div>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="badge"><svg viewBox="-60 -60 120 120"><use href="#mandala"/></svg></span><span><b>БОХО</b><small>жизнь, полная творчества</small></span></a>
+    <nav><a href="#dirs">Направления</a><a href="#schedule">Расписание</a><a href="#works">На заказ</a><a href="#gift">Сертификаты</a><a href="#faq">Вопросы</a></nav>
+    <a class="btn" href="#zapis">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap top">
+      <div style="padding-bottom:44px">
+        <span class="kicker">Творческая студия · Кемерово, Лесная Поляна</span>
+        <h1 style="margin-top:18px">Научитесь<br><em>плести макраме</em><br>рядом с домом</h1>
+        <p>Школа макраме и ковровой вышивки, мастер-классы для детей и творческие девичники. Выберите занятие в расписании и запишитесь в пару касаний.</p>
+        <div class="actions">
+          <a class="btn" href="#schedule">Выбрать занятие <span class="ar">→</span></a>
+          <a class="btn out" href="#gift">Подарить сертификат</a>
+        </div>
+      </div>
+      <div class="arch-box" aria-hidden="true">
+        <svg class="pattern" viewBox="-60 -60 120 120"><use href="#mandala"/></svg>
+        <div class="arch"><span>Фото: панно макраме на стене студии, рядом руки ученицы с хлопковым шнуром</span></div>
+        <div class="tag t1"><b>5</b>направлений<br>в одной студии</div>
+        <div class="tag t2"><b>🎁</b>Подарочные<br>сертификаты</div>
+      </div>
+    </div>
+    <div class="wrap" style="padding-inline:0">
+      <div class="strip">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3c-3 3-3 6 0 9s3 6 0 9M8 3c-3 3-3 6 0 9s3 6 0 9M16 3c-3 3-3 6 0 9s3 6 0 9"/></svg><div><b>Школа с нуля</b><span>макраме и ковровая вышивка</span></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg><div><b>Дети и взрослые</b><span>для каждого свой формат</span></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v12H4zM2 8h20M12 8v12M12 8c-2-4-6-4-6-1s6 1 6 1 6 2 6-1-4-3-6 1"/></svg><div><b>Изделия на заказ</b><span>макраме и шнур «зигзаг»</span></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><div><b>Бесплатная доставка</b><span>для заказов из магазина</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dirs">
+    <div class="wrap">
+      <span class="kicker">Направления</span>
+      <h2 style="margin-top:14px">Чем хочется <em>заняться?</em></h2>
+      <div class="dirs">
+        <div class="dir-list" id="dir-list"></div>
+        <div class="plan" id="plan"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule" style="padding-top:20px">
+    <div class="wrap">
+      <span class="kicker">Расписание</span>
+      <h2 style="margin-top:14px">Занятия <em>на неделю</em></h2>
+      <p style="color:var(--muted);margin:14px 0 0;max-width:60ch">Нажмите на занятие, и оно сразу подставится в заявку. Расписание больше не уходит вниз ленты: оно всегда под рукой, в одном месте. <span class="note">Пример заполнения, впишем ваши занятия</span></p>
+      <div class="sched"><table id="sched"></table></div>
+      <div class="legend"><span><i style="background:var(--sage)"></i>для детей</span><span><i style="background:var(--clay)"></i>для взрослых</span></div>
+    </div>
+  </section>
+
+  <section id="works" style="background:var(--panel)">
+    <div class="wrap">
+      <span class="kicker">На заказ</span>
+      <h2 style="margin-top:14px">Сплетём <em>для вашего дома</em></h2>
+      <p style="color:var(--muted);margin:14px 0 0;max-width:60ch">Изделия макраме и вещи, сшитые из хлопкового шнура в технике «зигзаг». Выберите, что нравится, и обсудим размер и цвет.</p>
+      <div class="works" id="works-grid"></div>
+    </div>
+  </section>
+
+  <section id="gift">
+    <div class="wrap">
+      <div class="gift">
+        <div>
+          <span class="kicker">Подарок к Новому году</span>
+          <h2 style="margin-top:14px">Подарите <em>вечер творчества</em></h2>
+          <p>Сертификат на мастер-класс, девичник или курс в школе. Подходит маме, подруге, коллеге и всем, кто давно хотел научиться плести.</p>
+          <div class="gift-opts" id="gift-opts"></div>
+          <div class="actions"><a class="btn" href="#zapis" id="gift-btn">Оформить сертификат <span class="ar">→</span></a></div>
+        </div>
+        <div class="card-cert" aria-hidden="true">
+          <svg viewBox="-60 -60 120 120"><use href="#mandala"/></svg>
+          <small>подарочный сертификат</small>
+          <div><b>БОХО</b><br><small id="cert-what">Мастер-класс по макраме</small></div>
+          <small>жизнь, полная творчества</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap about">
+      <div>
+        <span class="kicker">О студии</span>
+        <h2 style="margin-top:14px">Студия <em>«Бохо»</em></h2>
+        <p>Творческая студия макраме в жилом районе Лесная Поляна. Здесь учат плести и вышивать с нуля, проводят занятия для детей и девичники для взрослых, плетут изделия на заказ. А ещё продают уникальные вещи ручной работы от локальных брендов.</p>
+        <p><span class="note">Фото: Анна в студии за работой</span></p>
+      </div>
+      <div class="facts">
+        <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><strong>Солнечный бульвар, 32</strong>Кемерово, Лесная Поляна</span></div>
+        <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="8" width="18" height="9" rx="3"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg><span><strong>Есть парковка</strong>и вход, доступный для колясок</span></div>
+        <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><span><strong>Оплата наличными или переводом</strong>как вам удобнее</span></div>
+        <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M12 4v16"/></svg><span><strong>Школа, мастер-классы, девичники</strong>заказы и магазин в одном месте</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <span class="kicker">Отзывы</span>
+      <h2 style="margin-top:14px">Что говорят <em>ученицы</em></h2>
+      <div class="revs">
+        <div class="rev"><b>Здесь будут ваши отзывы</b>Соберём отзывы с Яндекс Карт и из сообщений ВКонтакте, с именами и датой.</div>
+        <div class="rev"><b>Фото работ учениц</b>Панно и кашпо, которые сплели на занятиях, рядом с отзывом.</div>
+        <div class="rev"><b>Кнопка «Оставить отзыв»</b>Ведёт прямо на карточку студии на Яндекс Картах.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:10px">
+    <div class="wrap" style="max-width:860px">
+      <span class="kicker">Вопросы</span>
+      <h2 style="margin:14px 0 18px">Перед <em>первым занятием</em></h2>
+      <details open><summary>Я никогда не плела. Получится?</summary><p>Школа рассчитана на тех, кто начинает с нуля. Сколько длится курс и сколько занятий в нём, уточняется.</p></details>
+      <details><summary>Что взять с собой?</summary><p>Уточняется: что студия выдаёт на месте, а что нужно принести.</p></details>
+      <details><summary>С какого возраста детские мастер-классы?</summary><p>Возраст и длительность занятий уточняются.</p></details>
+      <details><summary>Как устроить девичник в студии?</summary><p>Напишите дату и число гостей в заявке, и мы предложим программу. Сколько человек вмещает студия, уточняется.</p></details>
+      <details><summary>Как оплатить?</summary><p>Наличными или переводом.</p></details>
+      <details><summary>Можно заказать изделие с доставкой?</summary><p>Да, в магазине студии доставка бесплатная. Сроки изготовления на заказ уточняются.</p></details>
+    </div>
+  </section>
+
+  <section id="zapis">
+    <div class="wrap">
+      <div class="final">
+        <svg class="bg" viewBox="-60 -60 120 120" aria-hidden="true"><use href="#mandala"/></svg>
+        <div style="position:relative">
+          <h2>Запишитесь <em>на занятие</em></h2>
+          <p>Оставьте имя и телефон, а мы напишем, чтобы подтвердить время. Если удобнее сразу в мессенджер, нажмите ниже.</p>
+          <a class="wa" id="wa-link" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3.5 20.5 4.8 16A8.5 8.5 0 1 1 8 19.3z"/></g></svg>Написать в WhatsApp</a>
+        </div>
+        <div id="formbox">
+          <form id="form">
+            <input id="f-name" placeholder="Ваше имя" required autocomplete="name">
+            <input id="f-phone" type="tel" inputmode="tel" maxlength="18" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+            <select id="f-dir" aria-label="Направление"></select>
+            <input id="f-slot" placeholder="Удобный день и время (необязательно)">
+            <select id="f-msg" aria-label="Как связаться"><option>Написать в WhatsApp</option><option>Написать в Telegram</option><option>Позвонить</option></select>
+            <label class="consent" for="f-consent"><input id="f-consent" type="checkbox" required><span>Я даю <a class="link" href="#" data-doc="soglasie">согласие на обработку персональных данных</a> и принимаю <a class="link" href="#" data-doc="politika">политику конфиденциальности</a></span></label>
+            <button class="btn" type="submit">Отправить заявку <span class="ar">→</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><span>Студия</span><b id="c-addr"></b></div>
+      <div><span>Телефон</span><b><a id="c-phone" style="text-decoration:none"></a></b></div>
+      <div><span>Часы</span><b id="c-hours"></b></div>
+      <div><span>Соцсети</span><div class="socials" id="client-socials"></div></div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Студия «Бохо» · <a class="link" href="#" data-doc="politika">Политика конфиденциальности</a> · <a class="link" href="#" data-doc="soglasie">Согласие на обработку данных</a></span>
+      <span class="sign"><span><b>FOR.MI</b> designed &amp; developed by ABN</span><span class="socials tiny" id="dev-socials"></span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true">
+  <div class="sheet">
+    <button type="button" class="close" id="close" aria-label="Закрыть">×</button>
+    <div id="sheet"></div>
+  </div>
+</div>
+
+<script>
+/* ===== ДАННЫЕ СТУДИИ ===== */
+const STUDIO={
+  name:"Студия «Бохо»",
+  phone:"+7 (923) 527-91-12",
+  wa:"79235279112",
+  address:"Кемерово, Солнечный бульвар, 32",
+  hours:"до 19:00, дни уточняются",
+  /* направления: [название, подпись, заголовок, описание, что внутри, метки] */
+  dirs:[
+    ["Школа макраме","курс с нуля","Школа макраме","Научитесь плести с нуля: от первых узлов до своего изделия. Программа курса уточняется.",["Базовые узлы шаг за шагом","Своё изделие из шнура","Для тех, кто никогда не плёл"],["длительность уточняется","цена уточняется"]],
+    ["Ковровая вышивка","курс с нуля","Ковровая вышивка","Объёмные панно и коврики, которые вышивают специальной иглой. Программа курса уточняется.",["Техника с самого начала","Своя работа из пряжи","Программа уточняется"],["длительность уточняется","цена уточняется"]],
+    ["Детям","фактурная живопись","Мастер-классы для детей","Фактурная живопись и другие творческие занятия, после которых ребёнок приносит домой свою картину.",["Фактурная живопись","Своя картина домой","Расписание на каждую неделю"],["возраст уточняется","цена уточняется"]],
+    ["Девичник","для взрослых","Творческий девичник","Соберите подруг и проведите творческий вечер в студии. Подходит для дня рождения и праздника перед свадьбой.",["Творческий мастер-класс для компании","Повод и дата ваши","Программа уточняется"],["число гостей уточняется","цена уточняется"]],
+    ["На заказ","макраме и шнур","Изделия на заказ","Плетём макраме и шьём из хлопкового шнура в технике «зигзаг» под ваш интерьер.",["Обсуждаем размер и цвет","Можно в подарок","Бесплатная доставка из магазина"],["сроки уточняются","цена уточняется"]]
+  ],
+  /* пример расписания: время → Пн..Вс → [название, kids|adult] */
+  days:["Пн","Вт","Ср","Чт","Пт","Сб","Вс"],
+  schedule:{
+    "11:00":[null,null,null,null,null,["Фактурная живопись","kids"],["Фактурная живопись","kids"]],
+    "15:00":[null,["Фактурная живопись","kids"],null,["Фактурная живопись","kids"],null,["Девичник","adult"],null],
+    "18:00":[["Школа макраме","adult"],null,["Ковровая вышивка","adult"],null,["Школа макраме","adult"],null,null]
+  },
+  /* изделия: [название, описание, подпись к фото, цвет] */
+  works:[
+    ["Панно на стену","макраме, размер под вашу стену","Фото: большое панно над кроватью или диваном","var(--clay)"],
+    ["Кашпо для цветов","подвесное, из хлопкового шнура","Фото: кашпо с живым цветком у окна","var(--sage)"],
+    ["Изделия «зигзаг»","сшиты из хлопкового шнура","Фото: ваши изделия в технике «зигзаг»","var(--mocha)"],
+    ["Работы локальных брендов","из магазина студии","Фото: полка с работами ручной работы","var(--clay)"]
+  ],
+  gifts:["Мастер-класс по макраме","Ковровая вышивка","Курс в школе","Девичник","На сумму"],
+  socials:[["vk","https://vk.com/studio_boho"],["telegram","https://t.me/+kr5OohwEAII1MzMy"],["whatsapp","https://wa.me/79235279112"]],
+  owner:{name:"[ИП / название, уточнить]",inn:"[ИНН, уточнить]",address:"г. Кемерово, Солнечный бульвар, 32",email:"[email, уточнить]",site:"[адрес сайта]"}
+};
+const DEV_SOCIALS=[["telegram","https://t.me/abanev_dev"]];
+
+const $=s=>document.querySelector(s);
+const S=STUDIO;
+$("#c-phone").textContent=S.phone;$("#c-phone").href="tel:+"+S.wa;
+$("#c-addr").textContent=S.address;$("#c-hours").textContent=S.hours;
+$("#wa-link").href="https://wa.me/"+S.wa+"?text="+encodeURIComponent("Здравствуйте! Хочу записаться на занятие в студии «Бохо»");
+const mandala='<svg class="bg" viewBox="-60 -60 120 120" aria-hidden="true"><use href="#mandala"/></svg>';
+
+/* направления */
+let d=0;
+function renderDirs(){
+  $("#dir-list").innerHTML=S.dirs.map(([n,s],i)=>`<button class="dir" data-d="${i}" aria-pressed="${i===d}"><div>${n}<br><span>${s}</span></div></button>`).join("");
+  const [,,t,desc,list,meta]=S.dirs[d];
+  $("#plan").innerHTML=`${mandala}<h3>${t}</h3><p>${desc}</p><ul>${list.map(x=>`<li>${x}</li>`).join("")}</ul><div class="meta">${meta.map(m=>`<span>${m}</span>`).join("")}</div><a class="btn" href="#zapis" data-pick="${d}">Записаться <span class="ar">→</span></a>`;
+}
+$("#dir-list").addEventListener("click",e=>{const b=e.target.closest(".dir");if(b){d=+b.dataset.d;renderDirs()}});
+renderDirs();
+$("#f-dir").innerHTML=S.dirs.map(x=>`<option>${x[2]}</option>`).join("")+"<option>Подарочный сертификат</option>";
+
+/* расписание */
+$("#sched").innerHTML=`<thead><tr><th></th>${S.days.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${Object.entries(S.schedule).map(([t,row])=>`<tr><td class="time">${t}</td>${row.map((c,i)=>`<td>${c?`<button class="slot ${c[1]}" data-slot="${S.days[i]} ${t}, ${c[0]}"><b>${c[0]}</b><span>${c[1]==="kids"?"для детей":"для взрослых"}</span></button>`:""}</td>`).join("")}</tr>`).join("")}</tbody>`;
+
+/* изделия */
+$("#works-grid").innerHTML=S.works.map(([n,ds,ph,c])=>`<div class="work" style="--c:${c}"><div class="ph">${ph}</div><h3>${n}</h3><p>${ds}</p><div class="row"><span class="note">цена уточняется</span><a class="btn out" href="#zapis" data-order="${n}">Заказать</a></div></div>`).join("");
+
+/* сертификаты */
+let gsel=0;
+function renderGifts(){$("#gift-opts").innerHTML=S.gifts.map((g,i)=>`<button class="chip" data-g="${i}" aria-pressed="${i===gsel}">${g}</button>`).join("");$("#cert-what").textContent=S.gifts[gsel]}
+renderGifts();
+$("#gift-opts").addEventListener("click",e=>{const b=e.target.closest("[data-g]");if(b){gsel=+b.dataset.g;renderGifts()}});
+
+const dirSel=name=>{const o=[...$("#f-dir").options].findIndex(x=>x.text===name);if(o>-1)$("#f-dir").selectedIndex=o};
+document.addEventListener("click",e=>{
+  const s=e.target.closest(".slot");
+  if(s){document.querySelectorAll(".slot").forEach(x=>x.setAttribute("aria-pressed",x===s));$("#f-slot").value=s.dataset.slot;const n=s.dataset.slot.split(", ")[1];dirSel(n==="Фактурная живопись"?"Мастер-классы для детей":n==="Девичник"?"Творческий девичник":n);document.getElementById("zapis").scrollIntoView({behavior:"smooth"})}
+  const p=e.target.closest("[data-pick]");if(p){$("#f-dir").selectedIndex=+p.dataset.pick}
+  const o=e.target.closest("[data-order]");if(o){dirSel("Изделия на заказ");$("#f-slot").value="Заказ: "+o.dataset.order}
+  if(e.target.closest("#gift-btn")){dirSel("Подарочный сертификат");$("#f-slot").value="Сертификат: "+S.gifts[gsel]}
+});
+/* телефон: только +7 и 10 цифр, маска +7 (XXX) XXX-XX-XX */
+const ph=$("#f-phone");
+const fmtPhone=v=>{let d=v.replace(/\D/g,"");if(!d)return "";if(d[0]==="8")d="7"+d.slice(1);else if(d[0]!=="7")d="7"+d;const p=d.slice(1,11);let s="+7";if(p.length)s+=" ("+p.slice(0,3);if(p.length>3)s+=") "+p.slice(3,6);if(p.length>6)s+="-"+p.slice(6,8);if(p.length>8)s+="-"+p.slice(8,10);return s};
+const phoneDigits=()=>ph.value.replace(/\D/g,"").length;
+ph.addEventListener("input",()=>{ph.value=fmtPhone(ph.value);ph.setCustomValidity(phoneDigits()===11||phoneDigits()<=1?"":"Введите номер полностью: 10 цифр после +7")});
+ph.addEventListener("focus",()=>{if(!ph.value)ph.value="+7 ("});
+ph.addEventListener("blur",()=>{if(phoneDigits()<=1)ph.value=""});
+$("#form").addEventListener("submit",e=>{e.preventDefault();if(phoneDigits()!==11){ph.setCustomValidity("Введите номер полностью: 10 цифр после +7");ph.reportValidity();return}const n=$("#f-name").value.trim();$("#formbox").innerHTML=`<div class="ok">${n?n+", с":"С"}пасибо! Заявка принята, скоро напишем, чтобы подтвердить время. Это набросок, поэтому данные никуда не отправляются.</div>`});
+
+/* соцсети */
+const ICONS={
+telegram:'<path fill="currentColor" d="M21.4 4.3 2.9 11.5c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.5c.2.6.4.8.9.8s.6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8L22.8 5.8c.3-1.3-.4-1.9-1.4-1.5zM8.6 14.1l9.6-6c.5-.3.9-.1.5.2l-7.8 7.1-.3 3.3-2-4.6z"/>',
+vk:'<path fill="currentColor" d="M3 7h3.1c.9 3.8 2.6 5.8 3.9 6.3V7h3v3.6c1.4-.3 2.9-2 3.5-3.6h3c-.5 2.4-2.4 4.3-3.8 5.1 1.4.6 3.4 2.3 4.2 4.9h-3.3c-.7-1.9-2.2-3.3-3.6-3.5V17h-.4C7.4 17 3.5 13.2 3 7z"/>',
+whatsapp:'<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3.5 20.5 4.8 16A8.5 8.5 0 1 1 8 19.3z"/></g><path fill="currentColor" d="M9.2 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .6.5l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.1.1-.2.3 0 .5.4.7 1 1.4 1.7 1.9.6.4 1 .5 1.2.6.2 0 .3 0 .5-.2l.6-.8c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4 0 .3 0 1.1-.6 1.6-.5.5-1.4.8-2.3.6-1-.2-2.3-.7-3.6-1.9-1.2-1.1-2-2.4-2.3-3.3-.3-1 0-1.9.3-2.3z"/>'
+};
+const NAMES={telegram:"Telegram",vk:"ВКонтакте",whatsapp:"WhatsApp"};
+const socialLinks=l=>l.map(([k,u])=>`<a href="${u}" target="_blank" rel="noopener" aria-label="${NAMES[k]}" title="${NAMES[k]}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k]}</svg></a>`).join("");
+$("#client-socials").innerHTML=socialLinks(S.socials);
+$("#dev-socials").innerHTML=socialLinks(DEV_SOCIALS);
+
+/* документы по персональным данным (152-ФЗ) */
+const O=S.owner;
+const DOCS={
+politika:`<h3>Политика конфиденциальности</h3><p>Редакция от 12.10.2026</p>
+<h4>1. Кто обрабатывает данные</h4><p>Оператор персональных данных: ${O.name}, ИНН ${O.inn}, адрес: ${O.address}. Политика действует для сайта ${O.site} и составлена по Федеральному закону № 152-ФЗ «О персональных данных».</p>
+<h4>2. Какие данные мы собираем</h4><ul><li>имя;</li><li>номер телефона;</li><li>выбранное занятие, изделие или сертификат и удобное время;</li><li>технические данные: cookie, IP-адрес, сведения о браузере.</li></ul>
+<h4>3. Зачем</h4><ul><li>чтобы записать вас на занятие и подтвердить запись;</li><li>чтобы обсудить заказ изделия или сертификата;</li><li>чтобы улучшать работу сайта.</li></ul>
+<h4>4. Основание и сроки</h4><p>Данные обрабатываются на основании вашего согласия. Храним их до достижения целей обработки или до отзыва согласия, но не дольше 3 лет с последнего обращения.</p>
+<h4>5. Передача третьим лицам</h4><p>Мы не продаём и не передаём ваши данные третьим лицам, кроме случаев, предусмотренных законом. Данные хранятся на серверах в Российской Федерации.</p>
+<h4>6. Ваши права</h4><p>Вы можете узнать, какие данные мы храним, попросить их исправить или удалить и отозвать согласие. Напишите на ${O.email}, ответим в течение 10 рабочих дней.</p>
+<h4>7. Cookie</h4><p>Сайт использует cookie для корректной работы и статистики. Их можно отключить в настройках браузера.</p>`,
+soglasie:`<h3>Согласие на обработку персональных данных</h3>
+<p>Отправляя форму на сайте ${O.site}, я свободно, своей волей и в своём интересе даю согласие ${O.name} (ИНН ${O.inn}, адрес: ${O.address}) на обработку моих персональных данных: имени, номера телефона, сведений о выбранном занятии, заказе и удобном времени.</p>
+<p>Цель обработки: запись на занятия, оформление заказов и сертификатов, связь со мной.</p>
+<p>Действия с данными: сбор, запись, систематизация, хранение, уточнение, использование, удаление и уничтожение, с использованием средств автоматизации и без них.</p>
+<p>Согласие действует 3 года или до его отзыва. Отозвать согласие можно, написав на ${O.email}.</p>
+<p>Я ознакомлен(а) с политикой конфиденциальности.</p>`
+};
+document.addEventListener("click",e=>{
+  const x=e.target.closest("[data-doc]");
+  if(x){e.preventDefault();$("#sheet").innerHTML=DOCS[x.dataset.doc];$("#modal").hidden=false;$("#close").focus()}
+  if(e.target.id==="modal"||e.target.id==="close")$("#modal").hidden=true;
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").hidden=true});
+</script>
+</body>
+</html>
