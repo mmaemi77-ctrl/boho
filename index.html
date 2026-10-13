@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: тёплая бохо-студия. Арка вместо фото, узор с логотипа, выбор направления, расписание неделей, изделия на заказ, сертификаты, запись. Одна светлая тема в цветах логотипа */
+/* Layout: тёплая бохо-студия. Арка вместо фото, узор с логотипа, выбор направления, расписание неделей, сертификаты, запись. Одна светлая тема в цветах логотипа */
 :root{
   color-scheme:light;
   --bg:#F6F0E8;
@@ -125,17 +125,6 @@ header .btn{padding:10px 18px;font-size:14px}
 .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:13px;color:var(--muted);align-items:center}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 
-/* изделия на заказ */
-.works{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-.work{display:grid;gap:8px;align-content:start}
-.work .ph{aspect-ratio:3/4;border-radius:120px 120px 22px 22px;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 45%,var(--panel)),color-mix(in srgb,var(--c) 75%,var(--panel)));display:grid;place-items:center;text-align:center;padding:18px;font-size:12px;color:#6E5A48}
-.work h3{font-family:var(--body);font-size:16px;font-weight:700}
-.work p{margin:0;font-size:14px;color:var(--muted)}
-.work .row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.work .btn{padding:9px 14px;font-size:13px}
-@media (max-width:900px){.works{grid-template-columns:1fr 1fr}}
-@media (max-width:420px){.works{gap:12px}.work h3{font-size:15px}}
-
 /* сертификаты */
 .gift{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--panel2);border-radius:36px;padding:44px clamp(20px,5vw,56px);position:relative;overflow:hidden}
 .gift p{color:var(--muted);margin:16px 0 0}
@@ -235,7 +224,7 @@ footer{padding-block:40px 30px;border-top:1px solid var(--line);margin-top:60px}
 <header>
   <div class="wrap">
     <a class="logo" href="#top"><span class="badge"><svg viewBox="-60 -60 120 120"><use href="#mandala"/></svg></span><span><b>БОХО</b><small>жизнь, полная творчества</small></span></a>
-    <nav><a href="#dirs">Направления</a><a href="#schedule">Расписание</a><a href="#works">На заказ</a><a href="#gift">Сертификаты</a><a href="#faq">Вопросы</a></nav>
+    <nav><a href="#dirs">Направления</a><a href="#schedule">Расписание</a><a href="#gift">Сертификаты</a><a href="#faq">Вопросы</a></nav>
     <a class="btn" href="#zapis">Записаться</a>
   </div>
 </header>
@@ -255,7 +244,7 @@ footer{padding-block:40px 30px;border-top:1px solid var(--line);margin-top:60px}
       <div class="arch-box" aria-hidden="true">
         <svg class="pattern" viewBox="-60 -60 120 120"><use href="#mandala"/></svg>
         <div class="arch"><span>Фото: панно макраме на стене студии, рядом руки ученицы с хлопковым шнуром</span></div>
-        <div class="tag t1"><b>5</b>направлений<br>в одной студии</div>
+        <div class="tag t1"><b>4</b>направления<br>в одной студии</div>
         <div class="tag t2"><b>🎁</b>Подарочные<br>сертификаты</div>
       </div>
     </div>
@@ -263,8 +252,8 @@ footer{padding-block:40px 30px;border-top:1px solid var(--line);margin-top:60px}
       <div class="strip">
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3c-3 3-3 6 0 9s3 6 0 9M8 3c-3 3-3 6 0 9s3 6 0 9M16 3c-3 3-3 6 0 9s3 6 0 9"/></svg><div><b>Школа с нуля</b><span>макраме и ковровая вышивка</span></div></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg><div><b>Дети и взрослые</b><span>для каждого свой формат</span></div></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v12H4zM2 8h20M12 8v12M12 8c-2-4-6-4-6-1s6 1 6 1 6 2 6-1-4-3-6 1"/></svg><div><b>Изделия на заказ</b><span>макраме и шнур «зигзаг»</span></div></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><div><b>Бесплатная доставка</b><span>для заказов из магазина</span></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6-5.3-3-5.3 3 1.2-6L3.4 9.3l6-.7z"/></svg><div><b>Творческие девичники</b><span>день рождения, праздник с подругами</span></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v12H4zM2 8h20M12 8v12M12 8c-2-4-6-4-6-1s6 1 6 1 6 2 6-1-4-3-6 1"/></svg><div><b>Подарочные сертификаты</b><span>на мастер-класс, курс или сумму</span></div></div></div>
       </div>
     </div>
   </section>
@@ -287,15 +276,6 @@ footer{padding-block:40px 30px;border-top:1px solid var(--line);margin-top:60px}
       <p style="color:var(--muted);margin:14px 0 0;max-width:60ch">Нажмите на занятие, и оно сразу подставится в заявку. Расписание больше не уходит вниз ленты: оно всегда под рукой, в одном месте. <span class="note">Пример заполнения, впишем ваши занятия</span></p>
       <div class="sched"><table id="sched"></table></div>
       <div class="legend"><span><i style="background:var(--sage)"></i>для детей</span><span><i style="background:var(--clay)"></i>для взрослых</span></div>
-    </div>
-  </section>
-
-  <section id="works" style="background:var(--panel)">
-    <div class="wrap">
-      <span class="kicker">На заказ</span>
-      <h2 style="margin-top:14px">Сплетём <em>для вашего дома</em></h2>
-      <p style="color:var(--muted);margin:14px 0 0;max-width:60ch">Изделия макраме и вещи, сшитые из хлопкового шнура в технике «зигзаг». Выберите, что нравится, и обсудим размер и цвет.</p>
-      <div class="works" id="works-grid"></div>
     </div>
   </section>
 
@@ -324,14 +304,14 @@ footer{padding-block:40px 30px;border-top:1px solid var(--line);margin-top:60px}
       <div>
         <span class="kicker">О студии</span>
         <h2 style="margin-top:14px">Студия <em>«Бохо»</em></h2>
-        <p>Творческая студия макраме в жилом районе Лесная Поляна. Здесь учат плести и вышивать с нуля, проводят занятия для детей и девичники для взрослых, плетут изделия на заказ. А ещё продают уникальные вещи ручной работы от локальных брендов.</p>
+        <p>Творческая студия макраме в жилом районе Лесная Поляна. Здесь учат плести и вышивать с нуля, проводят занятия для детей и девичники для взрослых. Сертификат на занятие можно подарить к любому празднику.</p>
         <p><span class="note">Фото: Анна в студии за работой</span></p>
       </div>
       <div class="facts">
         <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><strong>Солнечный бульвар, 32</strong>Кемерово, Лесная Поляна</span></div>
         <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="8" width="18" height="9" rx="3"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg><span><strong>Есть парковка</strong>и вход, доступный для колясок</span></div>
         <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><span><strong>Оплата наличными или переводом</strong>как вам удобнее</span></div>
-        <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M12 4v16"/></svg><span><strong>Школа, мастер-классы, девичники</strong>заказы и магазин в одном месте</span></div>
+        <div class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h16M12 4v16"/></svg><span><strong>Школа, мастер-классы, девичники</strong>для детей и взрослых в одном месте</span></div>
       </div>
     </div>
   </section>
@@ -357,7 +337,6 @@ footer{padding-block:40px 30px;border-top:1px solid var(--line);margin-top:60px}
       <details><summary>С какого возраста детские мастер-классы?</summary><p>Возраст и длительность занятий уточняются.</p></details>
       <details><summary>Как устроить девичник в студии?</summary><p>Напишите дату и число гостей в заявке, и мы предложим программу. Сколько человек вмещает студия, уточняется.</p></details>
       <details><summary>Как оплатить?</summary><p>Наличными или переводом.</p></details>
-      <details><summary>Можно заказать изделие с доставкой?</summary><p>Да, в магазине студии доставка бесплатная. Сроки изготовления на заказ уточняются.</p></details>
     </div>
   </section>
 
@@ -421,8 +400,7 @@ const STUDIO={
     ["Школа макраме","курс с нуля","Школа макраме","Научитесь плести с нуля: от первых узлов до своего изделия. Программа курса уточняется.",["Базовые узлы шаг за шагом","Своё изделие из шнура","Для тех, кто никогда не плёл"],["длительность уточняется","цена уточняется"]],
     ["Ковровая вышивка","курс с нуля","Ковровая вышивка","Объёмные панно и коврики, которые вышивают специальной иглой. Программа курса уточняется.",["Техника с самого начала","Своя работа из пряжи","Программа уточняется"],["длительность уточняется","цена уточняется"]],
     ["Детям","фактурная живопись","Мастер-классы для детей","Фактурная живопись и другие творческие занятия, после которых ребёнок приносит домой свою картину.",["Фактурная живопись","Своя картина домой","Расписание на каждую неделю"],["возраст уточняется","цена уточняется"]],
-    ["Девичник","для взрослых","Творческий девичник","Соберите подруг и проведите творческий вечер в студии. Подходит для дня рождения и праздника перед свадьбой.",["Творческий мастер-класс для компании","Повод и дата ваши","Программа уточняется"],["число гостей уточняется","цена уточняется"]],
-    ["На заказ","макраме и шнур","Изделия на заказ","Плетём макраме и шьём из хлопкового шнура в технике «зигзаг» под ваш интерьер.",["Обсуждаем размер и цвет","Можно в подарок","Бесплатная доставка из магазина"],["сроки уточняются","цена уточняется"]]
+    ["Девичник","для взрослых","Творческий девичник","Соберите подруг и проведите творческий вечер в студии. Подходит для дня рождения и праздника перед свадьбой.",["Творческий мастер-класс для компании","Повод и дата ваши","Программа уточняется"],["число гостей уточняется","цена уточняется"]]
   ],
   /* пример расписания: время → Пн..Вс → [название, kids|adult] */
   days:["Пн","Вт","Ср","Чт","Пт","Сб","Вс"],
@@ -431,13 +409,6 @@ const STUDIO={
     "15:00":[null,["Фактурная живопись","kids"],null,["Фактурная живопись","kids"],null,["Девичник","adult"],null],
     "18:00":[["Школа макраме","adult"],null,["Ковровая вышивка","adult"],null,["Школа макраме","adult"],null,null]
   },
-  /* изделия: [название, описание, подпись к фото, цвет] */
-  works:[
-    ["Панно на стену","макраме, размер под вашу стену","Фото: большое панно над кроватью или диваном","var(--clay)"],
-    ["Кашпо для цветов","подвесное, из хлопкового шнура","Фото: кашпо с живым цветком у окна","var(--sage)"],
-    ["Изделия «зигзаг»","сшиты из хлопкового шнура","Фото: ваши изделия в технике «зигзаг»","var(--mocha)"],
-    ["Работы локальных брендов","из магазина студии","Фото: полка с работами ручной работы","var(--clay)"]
-  ],
   gifts:["Мастер-класс по макраме","Ковровая вышивка","Курс в школе","Девичник","На сумму"],
   socials:[["vk","https://vk.com/studio_boho"],["telegram","https://t.me/+kr5OohwEAII1MzMy"],["whatsapp","https://wa.me/79235279112"]],
   owner:{name:"[ИП / название, уточнить]",inn:"[ИНН, уточнить]",address:"г. Кемерово, Солнечный бульвар, 32",email:"[email, уточнить]",site:"[адрес сайта]"}
@@ -465,8 +436,6 @@ $("#f-dir").innerHTML=S.dirs.map(x=>`<option>${x[2]}</option>`).join("")+"<optio
 /* расписание */
 $("#sched").innerHTML=`<thead><tr><th></th>${S.days.map(x=>`<th>${x}</th>`).join("")}</tr></thead><tbody>${Object.entries(S.schedule).map(([t,row])=>`<tr><td class="time">${t}</td>${row.map((c,i)=>`<td>${c?`<button class="slot ${c[1]}" data-slot="${S.days[i]} ${t}, ${c[0]}"><b>${c[0]}</b><span>${c[1]==="kids"?"для детей":"для взрослых"}</span></button>`:""}</td>`).join("")}</tr>`).join("")}</tbody>`;
 
-/* изделия */
-$("#works-grid").innerHTML=S.works.map(([n,ds,ph,c])=>`<div class="work" style="--c:${c}"><div class="ph">${ph}</div><h3>${n}</h3><p>${ds}</p><div class="row"><span class="note">цена уточняется</span><a class="btn out" href="#zapis" data-order="${n}">Заказать</a></div></div>`).join("");
 
 /* сертификаты */
 let gsel=0;
@@ -479,7 +448,6 @@ document.addEventListener("click",e=>{
   const s=e.target.closest(".slot");
   if(s){document.querySelectorAll(".slot").forEach(x=>x.setAttribute("aria-pressed",x===s));$("#f-slot").value=s.dataset.slot;const n=s.dataset.slot.split(", ")[1];dirSel(n==="Фактурная живопись"?"Мастер-классы для детей":n==="Девичник"?"Творческий девичник":n);document.getElementById("zapis").scrollIntoView({behavior:"smooth"})}
   const p=e.target.closest("[data-pick]");if(p){$("#f-dir").selectedIndex=+p.dataset.pick}
-  const o=e.target.closest("[data-order]");if(o){dirSel("Изделия на заказ");$("#f-slot").value="Заказ: "+o.dataset.order}
   if(e.target.closest("#gift-btn")){dirSel("Подарочный сертификат");$("#f-slot").value="Сертификат: "+S.gifts[gsel]}
 });
 /* телефон: только +7 и 10 цифр, маска +7 (XXX) XXX-XX-XX */
@@ -508,14 +476,14 @@ const DOCS={
 politika:`<h3>Политика конфиденциальности</h3><p>Редакция от 12.10.2026</p>
 <h4>1. Кто обрабатывает данные</h4><p>Оператор персональных данных: ${O.name}, ИНН ${O.inn}, адрес: ${O.address}. Политика действует для сайта ${O.site} и составлена по Федеральному закону № 152-ФЗ «О персональных данных».</p>
 <h4>2. Какие данные мы собираем</h4><ul><li>имя;</li><li>номер телефона;</li><li>выбранное занятие, изделие или сертификат и удобное время;</li><li>технические данные: cookie, IP-адрес, сведения о браузере.</li></ul>
-<h4>3. Зачем</h4><ul><li>чтобы записать вас на занятие и подтвердить запись;</li><li>чтобы обсудить заказ изделия или сертификата;</li><li>чтобы улучшать работу сайта.</li></ul>
+<h4>3. Зачем</h4><ul><li>чтобы записать вас на занятие и подтвердить запись;</li><li>чтобы оформить подарочный сертификат;</li><li>чтобы улучшать работу сайта.</li></ul>
 <h4>4. Основание и сроки</h4><p>Данные обрабатываются на основании вашего согласия. Храним их до достижения целей обработки или до отзыва согласия, но не дольше 3 лет с последнего обращения.</p>
 <h4>5. Передача третьим лицам</h4><p>Мы не продаём и не передаём ваши данные третьим лицам, кроме случаев, предусмотренных законом. Данные хранятся на серверах в Российской Федерации.</p>
 <h4>6. Ваши права</h4><p>Вы можете узнать, какие данные мы храним, попросить их исправить или удалить и отозвать согласие. Напишите на ${O.email}, ответим в течение 10 рабочих дней.</p>
 <h4>7. Cookie</h4><p>Сайт использует cookie для корректной работы и статистики. Их можно отключить в настройках браузера.</p>`,
 soglasie:`<h3>Согласие на обработку персональных данных</h3>
-<p>Отправляя форму на сайте ${O.site}, я свободно, своей волей и в своём интересе даю согласие ${O.name} (ИНН ${O.inn}, адрес: ${O.address}) на обработку моих персональных данных: имени, номера телефона, сведений о выбранном занятии, заказе и удобном времени.</p>
-<p>Цель обработки: запись на занятия, оформление заказов и сертификатов, связь со мной.</p>
+<p>Отправляя форму на сайте ${O.site}, я свободно, своей волей и в своём интересе даю согласие ${O.name} (ИНН ${O.inn}, адрес: ${O.address}) на обработку моих персональных данных: имени, номера телефона, сведений о выбранном занятии, сертификате и удобном времени.</p>
+<p>Цель обработки: запись на занятия, оформление сертификатов, связь со мной.</p>
 <p>Действия с данными: сбор, запись, систематизация, хранение, уточнение, использование, удаление и уничтожение, с использованием средств автоматизации и без них.</p>
 <p>Согласие действует 3 года или до его отзыва. Отозвать согласие можно, написав на ${O.email}.</p>
 <p>Я ознакомлен(а) с политикой конфиденциальности.</p>`
