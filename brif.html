@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Бриф · студия «Бохо»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F6F0E8;--panel:#FFFBF6;--panel2:#EFE5D8;--ink:#3A2F27;--muted:#7C6D61;--line:#E3D6C6;
+  --mocha:#7D6A57;--clay:#C08A64;--sage:#9AA48A;--on-mocha:#FFF8F0;
+  --display:"Cormorant Garamond",Georgia,serif;--body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rhomb:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6'%3E%3Cpath d='M12 2 22 12 12 22 2 12z'/%3E%3Cpath d='M12 7 17 12 12 17 7 12z'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+body{font-variant-numeric:lining-nums;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;overflow-x:hidden}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;line-height:1.05;text-wrap:balance}
+h1 em,h2 em{font-style:italic;color:var(--clay);font-weight:500}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha)}
+.kicker::before{content:"";width:20px;height:20px;background:currentColor;-webkit-mask:var(--rhomb) center/contain no-repeat;mask:var(--rhomb) center/contain no-repeat}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+
+/* обложка */
+.cover{position:relative;overflow:hidden;padding:28px 0 40px;text-align:center}
+.cover .pattern{position:absolute;width:520px;height:520px;left:50%;top:-180px;transform:translateX(-50%);color:var(--line);opacity:.8}
+.cover .inner{position:relative}
+.badge{width:72px;height:72px;border-radius:50%;background:var(--mocha);display:grid;place-items:center;margin:0 auto 18px}
+.badge svg{width:56px;height:56px;color:#F1E6D8}
+.cover h1{font-size:clamp(44px,11vw,72px)}
+.cover p{color:var(--muted);max-width:52ch;margin:16px auto 0}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px}
+.meta span{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--mocha)}
+
+/* прогресс */
+.progress{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.progress .wrap{display:flex;align-items:center;gap:14px;padding-block:12px}
+.bar{flex:1;height:6px;border-radius:99px;background:var(--panel2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sage),var(--clay));border-radius:99px;transition:width .3s}
+.progress small{font-size:13px;font-weight:700;color:var(--mocha);white-space:nowrap}
+
+/* блоки */
+.step{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:28px clamp(18px,4vw,36px);margin-top:20px}
+.step-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.num{width:44px;height:44px;flex:none;border-radius:50%;background:var(--panel2);color:var(--mocha);display:grid;place-items:center;font-family:var(--display);font-size:24px;font-weight:600}
+.step h2{font-size:clamp(28px,6vw,38px)}
+.step .hint{color:var(--muted);font-size:14px;margin:4px 0 0}
+.q{margin-top:22px}
+.q > label,.q > .label{display:block;font-weight:700;font-size:15px;margin-bottom:8px}
+.q .sub{display:block;font-weight:500;color:var(--muted);font-size:13px;margin-top:2px}
+input[type=text],input[type=email],textarea{width:100%;font:16px var(--body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:13px 16px;transition:border-color .2s}
+textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--clay)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid2 label{font-size:13px;font-weight:600;color:var(--muted);display:grid;gap:6px}
+@media (max-width:520px){.grid2{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:9px 16px;font:600 14px var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--mocha);color:var(--on-mocha);border-color:var(--mocha)}
+
+/* фото-чеклист */
+.checks{display:grid;gap:10px}
+.check{display:flex;gap:12px;align-items:flex-start;background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer}
+.check input{appearance:none;width:22px;height:22px;flex:none;border:1.5px solid var(--mocha);border-radius:7px;margin:1px 0 0;display:grid;place-items:center;cursor:pointer}
+.check input:checked{background:var(--mocha)}
+.check input:checked::after{content:"";width:6px;height:11px;border:solid var(--on-mocha);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check b{display:block;font-size:15px}
+.check span{font-size:13px;color:var(--muted)}
+
+/* настроение */
+.moods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:600px){.moods{grid-template-columns:1fr}}
+.mood{border:1.5px solid var(--line);background:var(--bg);border-radius:20px;padding:14px;cursor:pointer;text-align:left;font-family:var(--body);color:var(--ink);display:grid;gap:10px}
+.mood[aria-pressed="true"]{border-color:var(--mocha);box-shadow:0 0 0 2px var(--mocha) inset}
+.sw{display:flex;height:46px;border-radius:12px;overflow:hidden}
+.sw i{flex:1}
+.mood b{font-family:var(--display);font-size:22px;line-height:1}
+.mood span{font-size:13px;color:var(--muted)}
+
+/* финал */
+.final{background:var(--mocha);color:var(--on-mocha);border-radius:32px;padding:32px clamp(20px,5vw,40px);margin-top:24px;position:relative;overflow:hidden}
+.final .bg{position:absolute;width:300px;height:300px;right:-90px;bottom:-110px;color:var(--on-mocha);opacity:.12}
+.final h2{font-size:clamp(32px,7vw,44px)}
+.final h2 em{color:#F0C9A8}
+.final p{opacity:.9;margin:12px 0 0;max-width:46ch}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:15px 24px;font:700 15px var(--body);cursor:pointer;text-decoration:none;background:var(--on-mocha);color:var(--mocha)}
+.btn.ghost{background:transparent;color:var(--on-mocha);border:1.5px solid color-mix(in srgb,var(--on-mocha) 50%,transparent)}
+.toast{margin-top:14px;font-size:14px;font-weight:600;min-height:1.4em;position:relative}
+
+/* что дальше */
+.next{margin-top:48px}
+.next h2{font-size:clamp(30px,6vw,40px);margin-top:12px}
+.road{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:0}
+.road li{display:grid;grid-template-columns:44px 1fr;gap:16px;position:relative;padding-bottom:22px}
+.road li:not(:last-child)::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+.road .dot{width:44px;height:44px;border-radius:50%;background:var(--panel);border:1.5px solid var(--line);display:grid;place-items:center;color:var(--mocha)}
+.road li:first-child .dot{background:var(--mocha);color:var(--on-mocha);border-color:var(--mocha)}
+.road .dot svg{width:20px;height:20px}
+.road b{display:block;padding-top:9px}
+.road span{color:var(--muted);font-size:14px}
+
+footer{margin-top:48px;padding-block:28px 40px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--muted)}
+footer b{color:var(--ink);letter-spacing:.06em}
+.saved{font-size:12px;color:var(--sage);font-weight:700}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="rh"><path d="M0-38 16-20 0-2-16-20z"/><path d="M0-31 10-20 0-9-10-20z"/><path d="M0-25 4.5-20 0-15-4.5-20z"/></g>
+    <g id="mandala" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+      <use href="#rh"/><use href="#rh" transform="rotate(45)"/><use href="#rh" transform="rotate(90)"/><use href="#rh" transform="rotate(135)"/>
+      <use href="#rh" transform="rotate(180)"/><use href="#rh" transform="rotate(225)"/><use href="#rh" transform="rotate(270)"/><use href="#rh" transform="rotate(315)"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="cover">
+  <svg class="pattern" viewBox="-60 -60 120 120" aria-hidden="true"><use href="#mandala"/></svg>
+  <div class="inner wrap">
+    <div class="badge"><svg viewBox="-60 -60 120 120"><use href="#mandala"/></svg></div>
+    <span class="kicker">Бриф для студии «Бохо»</span>
+    <h1 style="margin-top:12px">Соберём сайт <em>из ваших слов</em></h1>
+    <p>Анна, здесь 14 коротких вопросов. Отвечайте как удобно, хоть одним словом: если чего-то пока нет, пропускайте, придумаем вместе. Ответы сохраняются на телефоне, можно закрыть страницу и вернуться позже.</p>
+    <div class="meta"><span>около 10 минут</span><span>5 шагов</span><span>фото потом в WhatsApp</span></div>
+  </div>
+</header>
+
+<div class="progress"><div class="wrap"><div class="bar"><i id="bar"></i></div><small id="pct">0 из 14</small></div></div>
+
+<main class="wrap" id="form">
+
+  <section class="step">
+    <div class="step-head"><span class="num">1</span><h2>Занятия <em>и цены</em></h2></div>
+    <p class="hint">Это основа расписания и карточек направлений.</p>
+    <div class="q" data-q>
+      <span class="label">Сколько стоит?</span>
+      <div class="grid2">
+        <label>Курс школы макраме<input type="text" name="p_makrame" placeholder="например, 6 000 ₽ за курс"></label>
+        <label>Курс ковровой вышивки<input type="text" name="p_vyshivka" placeholder="например, 5 500 ₽"></label>
+        <label>Детское занятие<input type="text" name="p_deti" placeholder="например, 800 ₽"></label>
+        <label>Девичник<input type="text" name="p_devichnik" placeholder="с человека или за компанию"></label>
+      </div>
+    </div>
+    <div class="q" data-q>
+      <label for="kursy">Сколько занятий в курсах и сколько длится одно занятие?</label>
+      <textarea id="kursy" name="kursy" placeholder="Макраме: 4 занятия по 2 часа…"></textarea>
+    </div>
+    <div class="q" data-q>
+      <label for="raspisanie">Расписание на эту неделю<span class="sub">Можно просто прислать скрин поста в WhatsApp и отметить ниже</span></label>
+      <textarea id="raspisanie" name="raspisanie" placeholder="Вт 15:00 фактурная живопись…"></textarea>
+      <div class="chips" style="margin-top:10px"><button type="button" class="chip" data-chip="raspisanie_skrin" data-val="Пришлю скрином">Пришлю скрином</button></div>
+    </div>
+    <div class="q" data-q>
+      <label for="deti">Дети: с какого возраста и сколько в группе?</label>
+      <input type="text" id="deti" name="deti" placeholder="от 5 лет, до 8 детей">
+    </div>
+    <div class="q" data-q>
+      <label for="devichnik">Девичник: сколько гостей вмещает студия и что входит?</label>
+      <textarea id="devichnik" name="devichnik" placeholder="до 10 гостей, материалы, чай, фото…"></textarea>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="step-head"><span class="num">2</span><h2>Подарочные <em>сертификаты</em></h2></div>
+    <p class="hint">Главный декабрьский блок, поэтому важно сделать его понятным.</p>
+    <div class="q" data-q>
+      <label for="sert">Какие сертификаты есть сейчас и как их обычно оплачивают?</label>
+      <textarea id="sert" name="sert" placeholder="на мастер-класс, на сумму 2 000 / 3 000 ₽, оплата переводом…"></textarea>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="step-head"><span class="num">3</span><h2>Фото <em>и отзывы</em></h2></div>
+    <p class="hint">Фото и скриншоты удобнее прислать в WhatsApp. Здесь просто отметьте, что пришлёте.</p>
+    <div class="q" data-q>
+      <span class="label">Фото</span>
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="f_studia"><span><b>Студия внутри</b><span>общий вид, уголок с работами</span></span></label>
+        <label class="check"><input type="checkbox" name="f_vy"><span><b>Вы за работой</b><span>для блока «О студии»</span></span></label>
+        <label class="check"><input type="checkbox" name="f_raboty"><span><b>10–20 работ учениц и детей</b><span>лучше оригиналы, не из сторис</span></span></label>
+      </div>
+    </div>
+    <div class="q" data-q>
+      <span class="label">Отзывы</span>
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="f_otzyvy"><span><b>3–5 отзывов скриншотами</b><span>из ВК, WhatsApp или чатов студии</span></span></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="step-head"><span class="num">4</span><h2>Практичное</h2></div>
+    <div class="q" data-q>
+      <label for="chasy">Часы работы</label>
+      <input type="text" id="chasy" name="chasy" placeholder="Вт–Вс 10:00–19:00">
+    </div>
+    <div class="q" data-q>
+      <span class="label">Как принимаете оплату?</span>
+      <div class="chips" data-multi="oplata">
+        <button type="button" class="chip" data-val="наличные">Наличные</button>
+        <button type="button" class="chip" data-val="перевод">Перевод</button>
+        <button type="button" class="chip" data-val="карта">Карта</button>
+        <button type="button" class="chip" data-val="СБП / QR">СБП / QR</button>
+      </div>
+      <span class="label" style="margin-top:16px">Парковка рядом есть?</span>
+      <div class="chips" data-one="parkovka">
+        <button type="button" class="chip" data-val="есть">Есть</button>
+        <button type="button" class="chip" data-val="нет">Нет</button>
+        <button type="button" class="chip" data-val="во дворе, бесплатно">Во дворе</button>
+      </div>
+    </div>
+    <div class="q" data-q>
+      <label for="tg">Ссылка на Telegram-группу студии ещё действует?</label>
+      <input type="text" id="tg" name="tg" placeholder="да / новая ссылка">
+    </div>
+    <div class="q" data-q>
+      <span class="label">Для политики конфиденциальности<span class="sub">Это обязательная строка внизу сайта</span></span>
+      <div class="chips" data-one="status" style="margin-bottom:10px">
+        <button type="button" class="chip" data-val="ИП">ИП</button>
+        <button type="button" class="chip" data-val="самозанятая">Самозанятая</button>
+        <button type="button" class="chip" data-val="другое">Другое</button>
+      </div>
+      <div class="grid2">
+        <label>ФИО или название<input type="text" name="fio" autocomplete="name"></label>
+        <label>Email<input type="email" name="email" autocomplete="email"></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="step-head"><span class="num">5</span><h2>Ваш <em>стиль</em></h2></div>
+    <p class="hint">Какое настроение ближе? Можно выбрать одно или оставить как в наброске.</p>
+    <div class="q" data-q>
+      <div class="moods" data-one="mood">
+        <button type="button" class="mood" data-val="Тёплый мокко"><div class="sw"><i style="background:#7D6A57"></i><i style="background:#C08A64"></i><i style="background:#EFE5D8"></i><i style="background:#F6F0E8"></i></div><b>Тёплый мокко</b><span>как в наброске: уютно, по-домашнему</span></button>
+        <button type="button" class="mood" data-val="Светлый лён"><div class="sw"><i style="background:#B9A68F"></i><i style="background:#9AA48A"></i><i style="background:#F4EFE7"></i><i style="background:#FFFFFF"></i></div><b>Светлый лён</b><span>больше воздуха и белого</span></button>
+        <button type="button" class="mood" data-val="Терракота"><div class="sw"><i style="background:#A4573A"></i><i style="background:#D99A6C"></i><i style="background:#F2D9BF"></i><i style="background:#FBF3EA"></i></div><b>Терракота</b><span>ярче и смелее, акцент на цвет</span></button>
+      </div>
+    </div>
+    <div class="q" data-q>
+      <label for="refs">Сайты или аккаунты, которые нравятся по виду<span class="sub">Из любой сферы. 2–3 ссылки и одной фразой, что нравится</span></label>
+      <textarea id="refs" name="refs" placeholder="instagram.com/… нравятся фото на светлом фоне"></textarea>
+    </div>
+  </section>
+
+  <section class="final">
+    <svg class="bg" viewBox="-60 -60 120 120" aria-hidden="true"><use href="#mandala"/></svg>
+    <h2>Готово? <em>Отправьте мне</em></h2>
+    <p>Кнопка соберёт ответы в одно сообщение. Отправьте его в наш чат WhatsApp, а фото и скриншоты пришлите туда же следом.</p>
+    <div class="actions">
+      <button type="button" class="btn" id="send">Отправить в WhatsApp</button>
+      <button type="button" class="btn ghost" id="copy">Скопировать ответы</button>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+  </section>
+
+  <section class="next">
+    <span class="kicker">Что дальше</span>
+    <h2>От брифа <em>до запуска</em></h2>
+    <ol class="road">
+      <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg></span><div><b>Бриф</b><span>вы отвечаете на вопросы и присылаете фото</span></div></li>
+      <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></span><div><b>Первая версия</b><span>собираю сайт с вашими текстами, ценами и фото</span></div></li>
+      <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/></svg></span><div><b>Правки</b><span>смотрим вместе и доводим детали</span></div></li>
+      <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 10l3-3 4 1 4-5 3 3-2 5 1 4-3 3-3-1-5 4-3-3 5-4z"/></svg></span><div><b>Запуск <span id="launch">к 30 октября</span></b><span>показываю, как менять расписание с телефона</span></div></li>
+    </ol>
+  </section>
+
+  <footer>
+    <div><b>FOR.MI</b> · сайты для местного бизнеса</div>
+    <div class="saved" id="saved" style="margin-top:8px"></div>
+  </footer>
+</main>
+
+<script>
+/* Номер WhatsApp для кнопки отправки. Пусто: WhatsApp откроется с выбором чата */
+const WA_NUMBER = "";
+const KEY = "boho-brif-v1";
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const form = $("#form");
+
+/* чипы: data-one = один вариант, data-multi = несколько, data-chip = переключатель */
+form.addEventListener("click", e => {
+  const b = e.target.closest(".chip,.mood"); if (!b) return;
+  const grp = b.parentElement;
+  if (grp.dataset.one) { const on = b.getAttribute("aria-pressed") === "true"; grp.querySelectorAll("[data-val]").forEach(x => x.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", String(!on)); }
+  else b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true"));
+  update();
+});
+form.addEventListener("input", update);
+form.addEventListener("change", update);
+
+function state() {
+  const s = {};
+  $$("input[name],textarea[name]").forEach(el => s[el.name] = el.type === "checkbox" ? el.checked : el.value);
+  $$("[data-one],[data-multi]").forEach(g => s[g.dataset.one || g.dataset.multi] = [...g.querySelectorAll('[aria-pressed="true"]')].map(x => x.dataset.val));
+  $$("[data-chip]").forEach(c => s[c.dataset.chip] = c.getAttribute("aria-pressed") === "true");
+  return s;
+}
+function restore(s) {
+  $$("input[name],textarea[name]").forEach(el => { if (!(el.name in s)) return; if (el.type === "checkbox") el.checked = !!s[el.name]; else el.value = s[el.name] || ""; });
+  $$("[data-one],[data-multi]").forEach(g => { const v = s[g.dataset.one || g.dataset.multi] || []; g.querySelectorAll("[data-val]").forEach(x => x.setAttribute("aria-pressed", String(v.includes(x.dataset.val)))); });
+  $$("[data-chip]").forEach(c => c.setAttribute("aria-pressed", String(!!s[c.dataset.chip])));
+}
+function answered(q) {
+  return [...q.querySelectorAll("input,textarea")].some(el => el.type === "checkbox" ? el.checked : el.value.trim()) || !!q.querySelector('[aria-pressed="true"]');
+}
+function update() {
+  const qs = $$("[data-q]"), n = qs.filter(answered).length;
+  $("#bar").style.width = (n / qs.length * 100) + "%";
+  $("#pct").textContent = n + " из " + qs.length;
+  try { localStorage.setItem(KEY, JSON.stringify(state())); $("#saved").textContent = "Ответы сохранены на этом телефоне"; } catch (e) {}
+}
+try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s) restore(s); } catch (e) {}
+update();
+
+function text() {
+  const s = state(), L = [], add = (t, v) => { if (v && String(v).trim()) L.push(t + ": " + String(v).trim()); }, yes = v => v ? "пришлю" : "";
+  L.push("Бриф студии «Бохо»", "");
+  L.push("ЗАНЯТИЯ И ЦЕНЫ");
+  add("Школа макраме", s.p_makrame); add("Ковровая вышивка", s.p_vyshivka); add("Детское занятие", s.p_deti); add("Девичник", s.p_devichnik);
+  add("Курсы", s.kursy); add("Расписание", s.raspisanie); if (s.raspisanie_skrin) L.push("Расписание: пришлю скрином");
+  add("Дети", s.deti); add("Девичник, гости и что входит", s.devichnik);
+  L.push("", "СЕРТИФИКАТЫ"); add("Сертификаты", s.sert);
+  L.push("", "ФОТО И ОТЗЫВЫ");
+  add("Студия внутри", yes(s.f_studia)); add("Я за работой", yes(s.f_vy)); add("Работы учениц", yes(s.f_raboty)); add("Отзывы", yes(s.f_otzyvy));
+  L.push("", "ПРАКТИЧНОЕ");
+  add("Часы", s.chasy); add("Оплата", (s.oplata || []).join(", ")); add("Парковка", (s.parkovka || []).join("")); add("Telegram", s.tg);
+  add("Статус", (s.status || []).join("")); add("ФИО / название", s.fio); add("Email", s.email);
+  L.push("", "СТИЛЬ"); add("Настроение", (s.mood || []).join("")); add("Нравится", s.refs);
+  /* убираем заголовки разделов без ответов */
+  const out = [];
+  L.forEach((l, i) => { if (/^[А-ЯЁ ]+$/.test(l) && (!L[i + 1] || L[i + 1] === "")) return; out.push(l); });
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+function toast(t) { $("#toast").textContent = t; }
+async function copy() {
+  try { await navigator.clipboard.writeText(text()); toast("Скопировано, вставьте в чат WhatsApp"); }
+  catch (e) { toast("Не получилось скопировать, нажмите «Отправить в WhatsApp»"); }
+}
+$("#copy").addEventListener("click", copy);
+$("#send").addEventListener("click", () => {
+  const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text());
+  window.open(url, "_blank", "noopener");
+});
+</script>
+</body>
+</html>
